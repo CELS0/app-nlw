@@ -3,8 +3,11 @@ import { View } from "react-native";
 import { styles } from "./styles";
 import {Button} from '../Button'
 import { COLORS } from "../../theme";
+import { useAuth } from '../../hooks/auth'
 
 export function SigninBox() {
+    const { signIn } = useAuth()
+
     return (
         <View style={styles.container}>
             <Button
@@ -12,6 +15,7 @@ export function SigninBox() {
             color={COLORS.BLACK_SECONDARY}
             backgroundColor={COLORS.YELLOW}
             icon='github'
+            onPress={signIn}
             />
         </View>
     )
