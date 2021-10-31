@@ -3,6 +3,7 @@
     "name": "app-nlw",
     "slug": "app-nlw",
     "version": "1.0.0",
+    "scheme": "app-nlw",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
