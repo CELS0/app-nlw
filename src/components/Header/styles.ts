@@ -5,7 +5,9 @@ export const styles = StyleSheet.create({
     container: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 20,
     },
     logoutText:{
         fontSize: 15,
