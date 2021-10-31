@@ -9,10 +9,13 @@ import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar'
 
 export default function App() {
-  const [fontsLoaded] = useFonts([Roboto_400Regular, Roboto_700Bold])
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+  });
 
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <AppLoading />;
   }
 
   return (
