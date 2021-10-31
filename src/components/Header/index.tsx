@@ -10,7 +10,7 @@ export function Header() {
         <View style={styles.container}>
             <LogoSvg />
 
-            <UserPhoto imageUri="https://github.com/CELS0.png"/>
+            <UserPhoto imageUri="https://github.com/CELS0.png" />
 
             <TouchableOpacity>
                 <Text style={styles.logoutText}>Sair</Text>
