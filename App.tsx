@@ -7,7 +7,7 @@ import {
 } from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar'
-import {AuthProvider} from './src/hooks/auth'
+import { AuthProvider } from './src/hooks/auth'
 
 
 export default function App() {
@@ -22,6 +22,8 @@ export default function App() {
 
   return (
     <AuthProvider>
+      <StatusBar style='light' />
+      <Home />
     </AuthProvider>
   );
 }
