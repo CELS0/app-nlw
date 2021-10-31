@@ -13,9 +13,9 @@ export function Header() {
             <LogoSvg />
 
             <View style={styles.logoutButton}>
-                <TouchableOpacity onPress={signOut}>
+                {user && <TouchableOpacity onPress={signOut}>
                     <Text style={styles.logoutText}>Sair</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>}
 
                 <UserPhoto imageUri={user?.avatar_url} />
             </View>
