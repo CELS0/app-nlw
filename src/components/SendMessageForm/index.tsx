@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import { TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { Alert, Keyboard, TextInput, View } from "react-native";
+import { api } from "../../services/api";
 import { COLORS } from "../../theme";
 import { Button } from "../Button";
 import { styles } from "./styles";
@@ -7,24 +8,42 @@ import { styles } from "./styles";
 export function SendMessageForm() {
     const [message, setMessage] = useState('')
     const [sendingMessage, setSendingMessage] = useState(false);
+
+    async function handleMessageSubmit() {
+        if (message.trim().length > 0) {
+            setSendingMessage(true)
+            await api.post('/message', { text: message.trim() })
+
+            setMessage('')
+            Keyboard.dismiss();
+            setSendingMessage(false);
+            Alert.alert('Mensagem enviada com sucesso!')
+
+        } else {
+            Alert.alert('Escreva uma mensagem para enviar!')
+        }
+    }
+
     return (
         <View style={styles.container}>
             <TextInput
-            keyboardAppearance='dark'
-            placeholder='Qual sua expectativa para o evento?'
-            placeholderTextColor={COLORS.GRAY_PRIMARY}
-            multiline
-            maxLength={140}
-            onChangeText={setMessage}
-            value={message}
-            style={styles.input}
-            editable={!sendingMessage}
+                keyboardAppearance='dark'
+                placeholder='Qual sua expectativa para o evento?'
+                placeholderTextColor={COLORS.GRAY_PRIMARY}
+                multiline
+                maxLength={140}
+                onChangeText={setMessage}
+                value={message}
+                style={styles.input}
+                editable={!sendingMessage}
             />
 
             <Button
-            title='ENVIAR MENSAGEM'
-            color={COLORS.BLACK_SECONDARY}
-            backgroundColor={COLORS.YELLOW}
+                title='ENVIAR MENSAGEM'
+                color={COLORS.BLACK_SECONDARY}
+                backgroundColor={COLORS.YELLOW}
+                isLoading={sendingMessage}
+                onPress={handleMessageSubmit}
             />
         </View>
     )
